@@ -22,7 +22,7 @@ describe "TitleizePT module" do
   end
 
   it "should fix all-caps titles" do
-    "GUIA DE SOBREVIVÊNCIA".titleize_pt.must_equal "Guia de Sobrevivência"
+    "1º GUIA DE SOBREVIVÊNCIA".titleize_pt.must_equal "1º Guia de Sobrevivência"
   end
 
   it "should capitalize the first letter of regular words" do
@@ -62,10 +62,6 @@ describe "TitleizePT module" do
     TitleizePT::WORDS[:en].each do |word|
       "#{ word } is listed".titleize_locale.must_equal "#{ word.capitalize } Is Listed"
     end
-  end
-
-  it "should leave all-uppercase words untouched" do
-    "um pedido HTTP".titleize_pt.must_equal "Um Pedido HTTP"
   end
 
   it "should not modify its receiver" do

@@ -30,7 +30,7 @@ module TitleizePT
     title = mb_chars # This proxies string methods in an encoding safe manner
 
     # If the title is all-uppercase, assume it needs to be fixed and downcase it entirely
-    title.downcase! unless title[/[[:lower:]]/]
+    title.downcase!
 
     title.split(/(\b)/).each_with_index.map do |word, index|
       if word =~ /^\p{Upper}{2,}$/ # Respect acronyms
