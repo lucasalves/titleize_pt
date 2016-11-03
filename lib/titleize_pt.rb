@@ -33,8 +33,10 @@ module TitleizePT
     title.downcase!
 
     title.split(/(\b)/).each_with_index.map do |word, index|
-      if word =~ /^\p{Upper}{2,}$/ # Respect acronyms
-        word
+  
+      acronym = ActiveSupport::Inflector.inflections.acronyms[word.downcase.to_s]
+      if !acronym.nil?
+        acronym
       elsif WORDS[locale].include? word.downcase and not index.zero?
         word.downcase!
       else

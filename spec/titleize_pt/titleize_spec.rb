@@ -64,6 +64,11 @@ describe "TitleizePT module" do
     end
   end
 
+  it "should respect acronyms" do
+    ActiveSupport::Inflector.inflections { |inflect| inflect.acronym "UI" }
+    "UI PEDIATRIA CLÍNICA".titleize_pt.must_equal "UI Pediatria Clínica"
+  end
+
   it "should not modify its receiver" do
     title = "olá, mundo"
     title.titleize_pt.must_equal "Olá, Mundo"
